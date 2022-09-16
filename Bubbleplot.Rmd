@@ -1,6 +1,6 @@
 ---
 title: "Bubble Plot"
-output: pdf_document
+output:
 ---
 
 ```{r}
