@@ -1,0 +1,41 @@
+---
+title: "Bubble Plot"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(tidyr)
+library(hrbrthemes)
+library(viridis)
+```
+
+View Data
+
+```{r}
+head(gapminder)
+```
+
+```{r}
+ds = gapminder %>% filter(year == "2007")
+head(ds)
+```
+
+```{r}
+ds %>%
+    ggplot(aes(x = gdpPercap, y = lifeExp, size = pop, fill = continent ))+
+    geom_point(shape = 21, color = "black", alpha = 0.5)+
+    scale_size(range = c(0.2, 18), name = "Population")+
+    scale_fill_viridis(discrete = TRUE, option = "H")+
+    theme_ipsum()+
+    theme(legend.position = "right",
+          legend.key.size = unit(0.1, 'cm'),
+          legend.key.height = unit(0.1, 'cm'),
+          legend.text = element_text(size =  9))+
+    ylab("Life Expectancy")+
+    xlab("GDP per capita")
+
+```
